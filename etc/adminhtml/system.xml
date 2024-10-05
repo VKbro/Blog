@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="vijay_blog" translate="label" sortOrder="300">
+            <label>Vijay</label>
+        </tab>
+        <section id="blog" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Blog</label>
+            <tab>vijay_blog</tab>
+            <resource>Magento_Backend::admin</resource>
+            <group id="blog_settings" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Blog Settings</label>
+                <field id="enable_blog_module" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable blog module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="contents_per_page" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Contents per page</label>
+                    <depends>
+                        <field id="enable_blog_module">1</field>
+                    </depends>
+                    <validate>required-entry validate-digits</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
