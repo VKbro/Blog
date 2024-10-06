@@ -1,0 +1,49 @@
+   <?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+    <table name="vk_authors">
+        <column name="author_id" xsi:type="int" identity="true" nullable="false" unsigned="true"/>
+        <column name="author_name" xsi:type="varchar" nullable="false" length="255"/>
+        <column name="author_email" xsi:type="varchar" nullable="false" length="255"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="author_id"/>
+        </constraint>
+    </table>
+
+    <table name="vk_tags">
+        <column name="tag_id" xsi:type="int" identity="true" nullable="false" unsigned="true"/>
+        <column name="tag_name" xsi:type="varchar" nullable="false" length="50"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="tag_id"/>
+        </constraint>
+    </table>
+
+    <table name="vk_blogs">
+        <column name="blog_id" xsi:type="int" identity="true" nullable="false" unsigned="true"/>
+        <column name="author_id" xsi:type="int" nullable="false" unsigned="true"/>
+        <column name="created_at" xsi:type="timestamp" default="CURRENT_TIMESTAMP" on_update="false"/>
+        <column name="updated_at" xsi:type="timestamp" on_update="true"/>
+        <column name="blog_content" xsi:type="text"/>
+        <column name="blog_content_short" xsi:type="varchar" nullable="false" length="255"/>
+        <column name="blog_title" xsi:type="char" nullable="false" length="255"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="blog_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="VK_BLOGS_AUTHOR_ID_VK_AUTHORS_AUTHOR_ID" table="vk_blogs"
+                    column="author_id" referenceTable="vk_authors" referenceColumn="author_id" onDelete="CASCADE"/>
+    </table>
+
+    <table name="vk_blog_tags">
+        <column name="blog_tags_id" xsi:type="int" identity="true" nullable="false" unsigned="true"/>
+        <column name="blog_id" xsi:type="int" nullable="false" unsigned="true"/>
+        <column name="tag_id" xsi:type="int" nullable="false" unsigned="true"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="blog_tags_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="VK_BLOG_TAGS_BLOG_ID_VK_BLOGS_BLOG_ID" table="vk_blog_tags"
+                    column="blog_id" referenceTable="vk_blogs" referenceColumn="blog_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="VK_BLOG_TAGS_TAG_ID_VK_TAGS_TAG_ID" table="vk_blog_tags"
+                    column="tag_id" referenceTable="vk_tags" referenceColumn="tag_id" onDelete="CASCADE"/>
+    </table>
+</schema>
