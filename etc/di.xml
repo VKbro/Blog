@@ -5,4 +5,5 @@
     <preference for="Vijay\Blog\Api\Data\BlogInterface" type="Vijay\Blog\Model\Blog\BlogModel"/>
     <preference for="Vijay\Blog\Api\Data\BlogTagsInterface" type="Vijay\Blog\Model\Blog\BlogTagsModel"/>
     <preference for="Vijay\Blog\Api\Data\TagInterface" type="Vijay\Blog\Model\Tag\TagModel"/>
+    <preference for="Vijay\Blog\Api\BlogRepositoryInterface" type="Vijay\Blog\Repository\BlogRepository"/>
 </config>
