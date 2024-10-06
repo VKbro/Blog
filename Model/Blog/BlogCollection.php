@@ -21,8 +21,11 @@ class BlogCollection extends AbstractCollection
     {
         $authorTable = GlobalSchema::AUTHOR_TABLE;
         $this->getSelect()
-            ->from(['main_table' => $this->getMainTable()])
-            ->join($authorTable, "main_table.author_id = $authorTable.author_id");
+            ->from($this->getMainTable())
+            ->joinLeft(
+                $authorTable,
+                $this->getMainTable() . ".author_id = $authorTable.author_id"
+            );
         return $this;
     }
 }

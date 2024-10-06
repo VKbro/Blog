@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Vijay\Blog\Api\Data\AuthorInterface" type="Vijay\Blog\Model\Author\AuthorModel"/>
+    <preference for="Vijay\Blog\Api\Data\BlogInterface" type="Vijay\Blog\Model\Blog\BlogModel"/>
+    <preference for="Vijay\Blog\Api\Data\BlogTagsInterface" type="Vijay\Blog\Model\Blog\BlogTagsModel"/>
+    <preference for="Vijay\Blog\Api\Data\TagInterface" type="Vijay\Blog\Model\Tag\TagModel"/>
+    <preference for="Vijay\Blog\Api\BlogRepositoryInterface" type="Vijay\Blog\Repository\BlogRepository"/>
+</config>
