@@ -1,0 +1,48 @@
+{
+    "vk_authors": {
+        "column": {
+            "author_id": true,
+            "author_name": true,
+            "author_email": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "vk_tags": {
+        "column": {
+            "tag_id": true,
+            "tag_name": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "vk_blogs": {
+        "column": {
+            "blog_id": true,
+            "author_id": true,
+            "created_at": true,
+            "updated_at": true,
+            "blog_content": true,
+            "blog_content_short": true,
+            "blog_title": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "VK_BLOGS_AUTHOR_ID_VK_AUTHORS_AUTHOR_ID": true
+        }
+    },
+    "vk_blog_tags": {
+        "column": {
+            "blog_tags_id": true,
+            "blog_id": true,
+            "tag_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "VK_BLOG_TAGS_BLOG_ID_VK_BLOGS_BLOG_ID": true,
+            "VK_BLOG_TAGS_TAG_ID_VK_TAGS_TAG_ID": true
+        }
+    }
+}
